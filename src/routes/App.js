@@ -6,6 +6,18 @@ import "./App.css";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
+const routerList = [
+  {
+    name: '说明',
+    path: '/'
+  },
+  {
+    name: '表格',
+    path: '/table'
+  }
+]
+
+
 
 function AppPage() {
   const [collapsed, setCollapsed] = useState(false)
@@ -15,9 +27,8 @@ function AppPage() {
         <Header style={{ background: '#fff', padding: 0, height: 54 }}>header</Header>
         <Layout>
           <Sider collapsible collapsed={collapsed} onCollapse={() => { setCollapsed(!collapsed) }}>
-            <div className="logo" />
             <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-              <Menu.Item key="1">
+              {/* <Menu.Item key="1">
                 <Icon type="pie-chart" />
                 <span>Option 1</span>
               </Menu.Item>
@@ -53,7 +64,7 @@ function AppPage() {
               <Menu.Item key="9">
                 <Icon type="file" />
                 <span>File</span>
-              </Menu.Item>
+              </Menu.Item> */}
             </Menu>
           </Sider>
           <Layout>
