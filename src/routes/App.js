@@ -14,7 +14,11 @@ const routerList = [
   },
   {
     name: '表格',
-    path: '/d2'
+    path: '/d2', 
+  },
+  {
+    name: '刷新dom',
+    path: '/refresh'
   }
 ]
 

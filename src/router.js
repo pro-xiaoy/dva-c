@@ -4,6 +4,7 @@ import App from './routes/App';
 import D1 from './routes/d1';
 import D2 from './routes/d2';
 import Explain from '@/pages/Explain'
+import Refresh from '@/pages/Refresh'
 const routerList = [
   {
     component: Explain,
@@ -11,7 +12,11 @@ const routerList = [
   },
   {
     component: D2,
-    path: '/d2'
+    path: '/d2',
+  },
+  {
+    path: '/refresh', 
+    component: Refresh
   }
 ]
 
