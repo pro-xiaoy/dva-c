@@ -1,5 +1,10 @@
-{
-  "extraBabelPlugins": [
+const path = require('path')
+
+module.exports = {
+  alias: {
+    '@': path.resolve('src')
+  },
+  extraBabelPlugins: [
     [
       "import", 
       { 
@@ -9,7 +14,7 @@
       }
     ]
   ],
-  "theme": {
+  theme: {
     "@primary-color": "#1DA57A"
   }
 }

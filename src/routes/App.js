@@ -1,79 +1,53 @@
 import React, { useState } from "react";
 import { connect } from 'dva';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { withRouter } from 'dva/router';
 import "./App.css";
-
+import D1 from './d1'
+import D2 from './d2'
 const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
 
 const routerList = [
   {
     name: '说明',
-    path: '/'
+    path: '/d1'
   },
   {
     name: '表格',
-    path: '/table'
+    path: '/d2'
   }
 ]
 
+function AppPage(props) {
+  const { history } = props
 
 
-function AppPage() {
+  console.log('props++++++++', props)
+
   const [collapsed, setCollapsed] = useState(false)
+  
+  const menuClick = (item) => {
+    console.log('item+++++', item, props)
+    history.push(item.path)
+  }
+  
   return (
     <div className="App">
       <Layout style={{ minHeight: '100vh' }}>
         <Header style={{ background: '#fff', padding: 0, height: 54 }}>header</Header>
         <Layout>
           <Sider collapsible collapsed={collapsed} onCollapse={() => { setCollapsed(!collapsed) }}>
-            <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-              {/* <Menu.Item key="1">
-                <Icon type="pie-chart" />
-                <span>Option 1</span>
-              </Menu.Item>
-              <Menu.Item key="2">
-                <Icon type="desktop" />
-                <span>Option 2</span>
-              </Menu.Item>
-              <SubMenu
-                key="sub1"
-                title={
-                  <span>
-                    <Icon type="user" />
-                    <span>User</span>
-                  </span>
-                }
-              >
-                <Menu.Item key="3">Tom</Menu.Item>
-                <Menu.Item key="4">Bill</Menu.Item>
-                <Menu.Item key="5">Alex</Menu.Item>
-              </SubMenu>
-              <SubMenu
-                key="sub2"
-                title={
-                  <span>
-                    <Icon type="team" />
-                    <span>Team</span>
-                  </span>
-                }
-              >
-                <Menu.Item key="6">Team 1</Menu.Item>
-                <Menu.Item key="8">Team 2</Menu.Item>
-              </SubMenu>
-              <Menu.Item key="9">
-                <Icon type="file" />
-                <span>File</span>
-              </Menu.Item> */}
+            <Menu theme="dark" defaultSelectedKeys={['0']} mode="inline">
+              {routerList.map(((item, index) => (
+                <Menu.Item key={index} onClick={() => {menuClick(item)}}>
+                  <span>{item.name}</span>
+                </Menu.Item>
+              )))}
             </Menu>
           </Sider>
           <Layout>
             <Content style={{ margin: '0 16px' }}>
-              <Breadcrumb style={{ margin: '16px 0' }}>
-                <Breadcrumb.Item>User</Breadcrumb.Item>
-                <Breadcrumb.Item>Bill</Breadcrumb.Item>
-              </Breadcrumb>
-              <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>Bill is a cat.</div>
+              {props.children}
             </Content>
             <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
           </Layout>
@@ -84,4 +58,4 @@ function AppPage() {
 }
 
 
-export default connect()(AppPage);
+export default withRouter(connect()(AppPage));
