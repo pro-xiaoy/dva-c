@@ -1,7 +1,6 @@
 import React from 'react';
 import { Router, Route, Switch } from 'dva/router';
 import App from './routes/App';
-import D1 from './routes/d1';
 import D2 from './routes/d2';
 import Explain from '@/pages/Explain'
 import Refresh from '@/pages/Refresh'

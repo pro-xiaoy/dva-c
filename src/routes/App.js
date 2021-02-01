@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { connect } from 'dva';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Menu } from 'antd';
 import { withRouter } from 'dva/router';
 import "./App.css";
-import D1 from './d1'
-import D2 from './d2'
+
 const { Header, Content, Footer, Sider } = Layout;
 
 const routerList = [
